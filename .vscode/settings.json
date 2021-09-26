@@ -4,6 +4,7 @@
         "pcre2posix.h": "c",
         "pcre2.h": "c",
         "file_util.h": "c",
-        "regex_util.h": "c"
+        "regex_util.h": "c",
+        "string.h": "c"
     }
 }
