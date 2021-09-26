@@ -86,7 +86,7 @@ void d1p2() {
         }
     }
 
-    end_loop:
+end_loop:
 
     printf("answer: %i\n", abs(xy[0]) + abs(xy[1]));
 
