@@ -1,15 +1,22 @@
 build_dir = build/release
 c_flags = -stdlib=libc
+l_flags = -lpcre2-8
 
 rule cc
     command = clang -O3 -o $out -c $in
 
 rule link
-    command = clang $c_flags -o $out $in
+    command = clang $c_flags -o $out $in $l_flags
 
 build $build_dir/day1.o: cc ./src/day1.c
 build $build_dir/main.o: cc ./src/main.c
+build $build_dir/regex_util.o: cc ./AoC_C_utils/src/regex_util.c
+build $build_dir/file_util.o: cc ./AoC_C_utils/src/file_util.c
+build $build_dir/hashmap.o: cc ./packages/hashmap.c/hashmap.c
 
 build a.out: link $
     $build_dir/day1.o $
-    $build_dir/main.o
+    $build_dir/main.o $
+    $build_dir/regex_util.o $
+    $build_dir/file_util.o $
+    $build_dir/hashmap.o
