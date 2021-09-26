@@ -3,8 +3,8 @@
 
 #include "../AoC_C_utils/src/md5_util.h"
 
-// const char *input = "ffykfhsq";
-const char *input = "abc";
+const char *input = "ffykfhsq";
+// const char *input = "abc";
 
 void d5p1() {
     char md5_buf[32];
