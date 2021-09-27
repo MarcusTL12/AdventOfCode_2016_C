@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../AoC_C_utils/src/bitfield.h"
 #include "../AoC_C_utils/src/file_util.h"
 
 void d7p1() {
@@ -47,11 +48,11 @@ void d7p1() {
     free(input);
 }
 
-bool supports_ssl(char *line, char **next_line) {
-    __uint128_t outbits[6], inbits[6];
+static bool supports_ssl(char *line, char **next_line) {
+    uint64_t outbits[11], inbits[11];
 
-    memset(outbits, 0, 6 * sizeof(__uint128_t));
-    memset(inbits, 0, 6 * sizeof(__uint128_t));
+    memset(outbits, 0, 11 * sizeof(uint64_t));
+    memset(inbits, 0, 11 * sizeof(uint64_t));
 
     bool in_bracket = false;
 
@@ -69,21 +70,18 @@ bool supports_ssl(char *line, char **next_line) {
             if (in_bracket) {
                 int index =
                     ((int)(line[0] - 'a')) * 26 + ((int)(line[1] - 'a'));
-                div_t index_split = div(index, 128);
-                inbits[index_split.quot] |= ((__uint128_t)1) << index_split.rem;
+                bitfield_set(inbits, index, true);
             } else {
                 int index =
                     ((int)(line[1] - 'a')) * 26 + ((int)(line[0] - 'a'));
-                div_t index_split = div(index, 128);
-                outbits[index_split.quot] |= ((__uint128_t)1)
-                                             << index_split.rem;
+                bitfield_set(outbits, index, true);
             }
         }
     }
 
     bool ssl = false;
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 11; i++) {
         ssl |= (outbits[i] & inbits[i]);
     }
 
