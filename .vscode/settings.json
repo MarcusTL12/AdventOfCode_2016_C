@@ -6,6 +6,9 @@
         "file_util.h": "c",
         "regex_util.h": "c",
         "string.h": "c",
-        "md5.h": "c"
+        "md5.h": "c",
+        "stdbool.h": "c",
+        "stdlib.h": "c",
+        "stdint.h": "c"
     }
 }

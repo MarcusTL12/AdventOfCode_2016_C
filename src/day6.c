@@ -1,11 +1,11 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
 
 #include "../AoC_C_utils/src/file_util.h"
 #include "../AoC_C_utils/src/regex_util.h"
 
-static void find_msg(bool (cmp)(int a, int b)) {
+static void find_msg(bool(cmp)(int a, int b)) {
     char *input = file_read_full("inputfiles/day6/input");
 
     void *reg = regex_compile("\\w+");
@@ -13,8 +13,7 @@ static void find_msg(bool (cmp)(int a, int b)) {
     regex_iter it = regex_iter_create(reg, input);
 
     int msg_len = 0;
-    for (; input[msg_len] != '\n'; msg_len++)
-        ;
+    while (input[msg_len] != '\n') msg_len++;
 
     int *counters = malloc(26 * msg_len * sizeof(int));
     memset(counters, 0, 26 * msg_len * sizeof(int));
@@ -55,18 +54,10 @@ static void find_msg(bool (cmp)(int a, int b)) {
     free(input);
 }
 
-static bool less(int a, int b) {
-    return a < b;
-}
+static bool less(int a, int b) { return a < b; }
 
-static bool greater(int a, int b) {
-    return a > b;
-}
+static bool greater(int a, int b) { return a > b; }
 
-void d6p1() {
-    find_msg(greater);
-}
+void d6p1() { find_msg(greater); }
 
-void d6p2() {
-    find_msg(less);
-}
+void d6p2() { find_msg(less); }

@@ -12,6 +12,7 @@ build $build_dir/day6.o: cc ./src/day6.c
 build $build_dir/day3.o: cc ./src/day3.c
 build $build_dir/day5.o: cc ./src/day5.c
 build $build_dir/day4.o: cc ./src/day4.c
+build $build_dir/day7.o: cc ./src/day7.c
 build $build_dir/day1.o: cc ./src/day1.c
 build $build_dir/day2.o: cc ./src/day2.c
 build $build_dir/main.o: cc ./src/main.c
@@ -25,6 +26,7 @@ build a.out: link $
     $build_dir/day3.o $
     $build_dir/day5.o $
     $build_dir/day4.o $
+    $build_dir/day7.o $
     $build_dir/day1.o $
     $build_dir/day2.o $
     $build_dir/main.o $
