@@ -9,6 +9,7 @@ rule link
     command = clang $c_flags -o $out $in $l_flags
 
 build $build_dir/day6.o: cc ./src/day6.c
+build $build_dir/day11.o: cc ./src/day11.c
 build $build_dir/day9.o: cc ./src/day9.c
 build $build_dir/day3.o: cc ./src/day3.c
 build $build_dir/day5.o: cc ./src/day5.c
@@ -22,11 +23,13 @@ build $build_dir/main.o: cc ./src/main.c
 build $build_dir/regex_util.o: cc ./AoC_C_utils/src/regex_util.c
 build $build_dir/md5_util.o: cc ./AoC_C_utils/src/md5_util.c
 build $build_dir/bitfield.o: cc ./AoC_C_utils/src/bitfield.c
+build $build_dir/deque.o: cc ./AoC_C_utils/src/deque.c
 build $build_dir/file_util.o: cc ./AoC_C_utils/src/file_util.c
 build $build_dir/hashmap.o: cc ./packages/hashmap.c/hashmap.c
 
 build a.out: link $
     $build_dir/day6.o $
+    $build_dir/day11.o $
     $build_dir/day9.o $
     $build_dir/day3.o $
     $build_dir/day5.o $
@@ -40,5 +43,6 @@ build a.out: link $
     $build_dir/regex_util.o $
     $build_dir/md5_util.o $
     $build_dir/bitfield.o $
+    $build_dir/deque.o $
     $build_dir/file_util.o $
     $build_dir/hashmap.o

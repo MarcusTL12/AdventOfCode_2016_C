@@ -12,6 +12,8 @@
         "stdint.h": "c",
         "libc-header-start.h": "c",
         "stddef.h": "c",
-        "ctype.h": "c"
+        "ctype.h": "c",
+        "deque.h": "c",
+        "cstdlib": "c"
     }
 }
